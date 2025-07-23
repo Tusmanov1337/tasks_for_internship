@@ -7,4 +7,4 @@ def is_palindrome(string):
     except TypeError:
         result = str(string)
 
-    print(result == result[::-1])
+    return result == result[::-1]
