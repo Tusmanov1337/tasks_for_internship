@@ -7,6 +7,6 @@ def count_words(string):
         result.setdefault(word, 0)
         result[word] += 1
 
-    print(result)
+    return result 
 
 
