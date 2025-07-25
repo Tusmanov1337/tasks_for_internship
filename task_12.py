@@ -1,6 +1,6 @@
 class Dessert:
 
-    def __init__(self, name=None, calories=None):
+    def __init__(self, name= '', calories= ''):
         self.name = name
         self.calories = calories
 
@@ -10,34 +10,28 @@ class Dessert:
 
     @name.setter
     def name(self, name):
-        if type(name) == str:
-            self._name = name
-        else:
-            self._name = None
-
+        self._name = name
+        
     @property
     def calories(self):
         return self._calories
 
     @calories.setter
     def calories(self, calories):
-        if type(calories) not in (int, float):
-            self._calories = None
-
+        self._calories = calories
+    
     def is_healthy(self):
-        if self._calories is None:
-            return False
-
-        else:
+        try: 
             return self.calories < 200
+        except TypeError:
+            return False
 
     def is_delicious(self):
         return isinstance(self, Dessert)
 
-
 class JellyBean(Dessert):
 
-    def __init__(self, name=None, calories=None, flavor=None):
+    def __init__(self, name= '', calories= '', flavor= ''):
         super().__init__(name, calories)
         self.flavor = flavor
 
@@ -48,14 +42,9 @@ class JellyBean(Dessert):
 
     @flavor.setter
     def flavor(self, flavor):
-        if not type(flavor) == str:
-            self._flavor = None
-        else: self._flavor = flavor
+        self._flavor = flavor
 
 
     def is_delicious(self):
-        if not self._flavor is None and self._flavor == 'black licorice':
-            return False
-        else: return True
-
-
+        return not(self.flavor == 'black licorice')
+        
